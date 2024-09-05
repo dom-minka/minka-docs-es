@@ -5445,7 +5445,7 @@ components:
         claims:
           type: array
           items:
-            $ref: "#/components/schemas/Claim"
+            $ref: "#/components/schemas/Claims"
         schema:
           type: string
           description: El tipo de esquema del intento.
@@ -5458,23 +5458,23 @@ components:
             $ref: "#/components/schemas/Access"
         config:
           $ref: "#/components/schemas/Config"
-    Claim:
+    Claims:
       type: object
       properties:
         action:
           type: string
           description: La acción de la reclamación.
           example: "transfer"
-        amount:
-          type: number
-          description: El monto asociado con la reclamación.
-          example: 4200
         source:
           $ref: "#/components/schemas/Source"
-        symbol:
-          $ref: "#/components/schemas/Symbol"
         target:
           $ref: "#/components/schemas/Target"
+          symbol:
+            $ref: "#/components/schemas/Symbol"
+        amount:
+          type: number
+          description: El monto asociado con la accion.
+          example: 4200
     IntentMeta:
       type: object
       properties:
