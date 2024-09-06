@@ -41,7 +41,7 @@
 
 ## Guias
 
-* [Cómo generar llaves y firmas](guias/como-generar-llaves-y-firmas.md)
+* [Cómo generar llaves y firmas](guias/como-generar-claves-de-firma.md)
 
 ## Referencias
 

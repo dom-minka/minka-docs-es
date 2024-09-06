@@ -1,8 +1,21 @@
 ---
 icon: binary-lock
+layout:
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Cómo generar llaves y firmas
+
+## Resumen
 
 Las solicitudes de cambios o escritura (POST) a Ledger siempre contienen objeto data diseñada para transmitir toda la información necesaria para realizar el cambio. Esta data esta encriptada con un llave privado generando un hash que permite verificar el author del cambio.&#x20;
 
@@ -14,6 +27,8 @@ Debido a esto, los cambios son más directas, seguras y no se pueden repudiar.&#
 Mas sobre conceptos de [autenticación](../explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-mediante-las-firmas.md) mediante firmas.&#x20;
 {% endhint %}
 
+## Pasos para generar y firmar
+
 ### Generación de Llaves Privadas
 
 **Importar la biblioteca de criptografía**: Asegúrate de tener instalada una biblioteca que soporte la generación de claves Ed25519 (por ejemplo, `cryptography` en Python).
@@ -22,7 +37,7 @@ Mas sobre conceptos de [autenticación](../explicaciones/sobre-seguridad/sobre-a
 
 **Exportar las claves en formato raw y eliminar prefijos**: Convierte las claves generadas a formato raw, eliminas los prefijos específicos para obtener las claves en formato bruto, y luego codifica las claves en base64 para su uso.
 
-### Uso de Claves Privadas para Generar un Hash de Datos
+### Uso de Claves Privadas para firmar un Hash de Datos
 
 **Crear un hash de los datos**: Utiliza una función de hashing como SHA-256 para obtener un hash de los datos que quieres firmar.
 
@@ -67,76 +82,6 @@ tB/gTevBYDYYYUgOOlsKV2Iq8DzmEtleeTopaY63wqs=
 {% hint style="info" %}
 El formato \`raw\` es más pequeño en tamaño que las alternativas porque no incluye cabeceras adicionales. Además, muchas bibliotecas existentes esperan claves en formato \`raw\` de Ed25519, por lo que este formato también ofrece buena compatibilidad con el ecosistema actual. \</aside>
 {% endhint %}
-
-### Pseudocódigo para proceso de generación de claves.
-
-A continuación, se presenta un pseudocódigo que explica el proceso de generación de claves.&#x20;
-
-Este pseudocódigo se enfoca en los pasos generales para transformar claves del formato `der` al formato `raw`.
-
-```pseudo
-pseudoCopy code
-
-1. Importar la biblioteca de criptografía
-
-2. Definir los prefijos DER para claves secretas y públicas
-   - Prefijo de clave secreta (hexadecimal): '302e020100300506032b657004220420'
-   - Prefijo de clave pública (hexadecimal): '302a300506032b6570032100'
-
-3. Función para generar un par de claves Ed25519:
-   - Generar un par de claves Ed25519 utilizando el módulo de criptografía.
-   - Exportar la clave secreta en formato DER y convertirla a formato hexadecimal.
-   - Exportar la clave pública en formato DER y convertirla a formato hexadecimal.
-
-4. Eliminar los prefijos DER de las claves exportadas para obtener los valores en bruto.
-   - Eliminar el prefijo secreto de la clave secreta DER.
-   - Eliminar el prefijo público de la clave pública DER.
-
-5. Codificar las claves en formato `raw` usando base64.
-   - Convertir la clave secreta en bruto a base64.
-   - Convertir la clave pública en bruto a base64.
-
-6. Devolver las claves formateadas en `ed25519-raw` con las representaciones secretas y públicas.
-
-7. Imprimir las claves generadas.
-```
-
-#### Pseudocódigo en Detalle:
-
-```pseudo
-pseudoCopy codeimportar biblioteca de criptografía
-
-definir PREFIJO_SECRETO_DER = '302e020100300506032b657004220420'
-definir PREFIJO_PUBLICO_DER = '302a300506032b6570032100'
-
-función generarParDeClavesLedger():
-    // Generar par de claves Ed25519
-    parDeClavesDER = generarParDeClaves('ed25519')
-    
-    // Exportar claves en formato DER
-    claveSecretaDER = exportarClaveSecreta(parDeClavesDER, formato='der', tipo='pkcs8')
-    clavePublicaDER = exportarClavePublica(parDeClavesDER, formato='der', tipo='spki')
-    
-    // Convertir claves a hexadecimal y eliminar prefijos DER
-    claveSecretaRAW = eliminarPrefijo(claveSecretaDER, PREFIJO_SECRETO_DER)
-    clavePublicaRAW = eliminarPrefijo(clavePublicaDER, PREFIJO_PUBLICO_DER)
-    
-    // Codificar claves en base64
-    claveSecretaCodificada = codificarBase64(claveSecretaRAW)
-    clavePublicaCodificada = codificarBase64(clavePublicaRAW)
-    
-    retornar {
-        formato: 'ed25519-raw',
-        secreto: claveSecretaCodificada,
-        publica: clavePublicaCodificada
-    }
-
-// Generar claves y mostrar
-parDeClaves = generarParDeClavesLedger()
-imprimir(parDeClaves)
-```
-
-Este pseudocódigo ilustra el flujo de generación de claves Ed25519 y su transformación al formato `raw`, detallando los pasos necesarios y haciendo énfasis en la eliminación de prefijos y la codificación en base64.
 
 ### Bibliotecas en otras lenguajes
 
