@@ -4,11 +4,11 @@ icon: signature-slash
 
 # Autenticación mediante las firmas
 
-Las solicitudes de cambios o escritura (POST) a Libro Mayor siempre contienen una carga (payload) diseñada para transmitir toda la información necesaria para realizar el cambio.
-
-Debido a esto, los cambios son más directas, seguras y no se pueden repudiar.&#x20;
+Las solicitudes de cambios o escritura (POST) a Ledger siempre contienen objeto data diseñada para transmitir toda la información necesaria para realizar el cambio. Esta data esta encriptada con un llave privado generando un hash que permite verificar el author del cambio.&#x20;
 
 El mecanismo de seguridad principal para validar los cambios está contenido en el array `proofs` que se proporciona en el objeto `meta` como parte del mensaje.&#x20;
+
+Debido a esto, los cambios son más directas, seguras y no se pueden repudiar.&#x20;
 
 {% hint style="info" %}
 Para lectura (GET) pueden usar autenticación con [`token JWT.` ](autenticacion-con-token-jwt.md)

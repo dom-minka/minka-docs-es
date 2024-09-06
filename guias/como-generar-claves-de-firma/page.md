@@ -1,6 +1,0 @@
----
-icon: node
----
-
-# Page
-

@@ -4,7 +4,6 @@
 
 * [Introducción](README.md)
 * [Resumen rapido](home/resumen-rapido.md)
-* [Conceptos Basicos](home/conceptos-basicos.md)
 * [Sobre la documentacion](home/sobre-la-documentacion.md)
 
 ## Tutoriales
@@ -42,10 +41,7 @@
 
 ## Guias
 
-* [Cómo generar claves de firma](guias/como-generar-claves-de-firma/README.md)
-  * [Algoritmos de generar y verificar firmas](guias/como-generar-claves-de-firma/algoritmos-de-generar-y-verificar-firmas.md)
-  * [Page](guias/como-generar-claves-de-firma/page.md)
-  * [Librerias ibliotecas en otros lenguajes](guias/como-generar-claves-de-firma/librerias-ibliotecas-en-otros-lenguajes.md)
+* [Cómo generar claves de firma](guias/como-generar-claves-de-firma.md)
 
 ## Referencias
 
