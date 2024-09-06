@@ -8,14 +8,13 @@ icon: money-bill-1
 
 ### Intentos de pago
 
-Los intents representan una forma de ejecutar un cambio en el sistema de pago (ledger). \
-Los cambios más comunes que involucran intentos de pago son los movimientos de saldos entre billeteras (wallets) en el sistema de pago en tiempo real.
+Los intentos de pago (intents) constituyen un mecanismo para ejecutar modificaciones en el sistema de pago (ledger). Las modificaciones más frecuentes implican transferencias de saldos entre cuentas (wallets) en el sistema de pago en tiempo real, que pueden pertenecer a participantes directos o terceros conectados al sistema.
 
-El autor del intent lo construye y firma con su clave privada, asegurando así la integridad y autenticidad de su intención de pago.&#x20;
+Para procesar el intent y aplicar la modificación en el ledger, es necesario firmarlo con la llave privada. La información del cambio está contenida en el objeto "data", el cual incluye todos los detalles necesarios para efectuar la modificación. El objeto "data" se encripta, generando un hash que permite verificar la autoría del cambio.
 
-Las solicitudes de cambios o escritura (POST) a Ledger siempre contienen objeto `data` diseñada para transmitir toda la información necesaria para realizar el cambio. Esta data esta encriptada con un llave privado generando un `hash` que permite verificar el author del cambio.&#x20;
+Este proceso asegura que solo el propietario de la llave privada pueda realizar modificaciones en el ledger, manteniendo la seguridad y confiabilidad del sistema.
 
-Cada mensaje está estructurado en un formato JSON y similar a JWT, separando el objeto "data", que contiene el mensaje enviado, y "meta", que incluye información sobre tiempo, firmas y contexto.
+Cada mensaje se estructura en formato JSON, similar a JWT, separando el objeto "data", que contiene el mensaje enviado, del objeto "meta", que incluye información sobre tiempo, firmas y contexto.
 
 ```json
 {
