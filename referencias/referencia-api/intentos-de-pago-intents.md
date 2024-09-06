@@ -78,7 +78,7 @@ Los estados de intento de pago son y se realizan agregando pruebas (proofs) al i
 | `Completed` | El intent se procesó correctamente.                                                                                                     |
 | `Rejected`  | El procesamiento del intent falló. Los cambios en los datos del ledger son rechazados y no pueden ser persistidos.                      |
 
-## Interfaz REST API
+## Referencia API
 
 {% swagger src="../../.gitbook/assets/minka-api-v2-es.yaml" path="/intents" method="post" %}
 [minka-api-v2-es.yaml](../../.gitbook/assets/minka-api-v2-es.yaml)

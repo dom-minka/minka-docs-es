@@ -1,3 +1,7 @@
+---
+icon: arrows-rotate-reverse
+---
+
 # Débitos y Créditos (bridge)
 
 ## Contexto
