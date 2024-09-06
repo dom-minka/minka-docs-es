@@ -83,6 +83,74 @@ tB/gTevBYDYYYUgOOlsKV2Iq8DzmEtleeTopaY63wqs=
 El formato \`raw\` es más pequeño en tamaño que las alternativas porque no incluye cabeceras adicionales. Además, muchas bibliotecas existentes esperan claves en formato \`raw\` de Ed25519, por lo que este formato también ofrece buena compatibilidad con el ecosistema actual. \</aside>
 {% endhint %}
 
+## Implementacion
+
+### NodeJs
+
+A partir de NodeJS (≥12.0.0), podemos generar estas claves utilizando el módulo integrado `crypto`. Anteriormente, teníamos que usar una biblioteca de terceros como `elliptic`.
+
+Este módulo no puede exportar directamente claves Ed25519 en formato `raw`, que es el utilizado en el ledger, por lo que debemos depender del formato `der` compatible y transformarlo a nuestro formato `raw`.
+
+La clave codificada en el formato binario `der` utiliza la sintaxis `ASN.1` y contiene los datos binarios prefijados con metadatos sobre la clave (identificador del algoritmo, longitud de la clave, etc.), seguidos por la clave binaria en bruto. Este prefijo es diferente para la clave secreta y la clave pública, como se muestra a continuación.
+
+También existe una herramienta útil para depurar el contenido de registros en formato `der`, que comúnmente se utilizan para representar claves, certificados, firmas y otras entidades criptográficas:
+
+* [https://lapo.it/asn1js/](https://lapo.it/asn1js/)
+
+{% hint style="info" %}
+Aunque esta herramienta no envía ningún dato al servidor al decodificar registros, ten cuidado: no se recomienda pegar claves privadas utilizadas en producción u otros datos sensibles.
+{% endhint %}
+
+Para obtener la clave **raw** utilizada por el ledger, simplemente necesitamos eliminar el prefijo `der` de la clave exportada desde el módulo `crypto` de NodeJS. Los prefijos exactos representados en codificación hexadecimal son:
+
+* Prefijo hexadecimal de clave secreta: `302e020100300506032b657004220420`
+* Prefijo hexadecimal de clave pública: `302a300506032b6570032100`
+
+Después de eliminar estos prefijos de las exportaciones `der`, debemos codificar las claves en bruto de 256 bits restantes con `base64` para obtener una clave de 44 caracteres requerida para el ledger.
+
+Así es como se genera un nuevo par de claves usando el paquete integrado `crypto`:
+
+```jsx
+const crypto = require('crypto')
+
+const DER_SECRET_PREFIX = '302e020100300506032b657004220420'
+const DER_PUBLIC_PREFIX = '302a300506032b6570032100'
+
+function generateLedgerKeyPair() {
+	// Generate random ed25519 keys
+	const keyPairDer = crypto.generateKeyPairSync('ed25519')
+	
+	// Export secret and public keys in der format
+	const secretDer = keyPairDer.privateKey
+		.export({ format: 'der', type: 'pkcs8' })
+		.toString('hex')
+	const publicDer = keyPairDer.publicKey
+		.export({ format: 'der', type: 'spki' })
+		.toString('hex')
+	
+	const secretRaw = Buffer.from(
+		secretDer.slice(DER_SECRET_PREFIX.length),
+		'hex',
+	).toString('base64')
+	const publicRaw = Buffer.from(
+		publicDer.slice(DER_PUBLIC_PREFIX.length),
+		'hex',
+	).toString('base64')
+
+	return {
+		format: 'ed25519-raw',
+		secret: secretRaw,
+		public: publicRaw,
+	}
+}
+
+// Generate keys
+const keyPair = generateLedgerKeyPair()
+
+// Print keys
+console.log(JSON.stringify(keyPair, null, 2))
+```
+
 ### Bibliotecas en otras lenguajes
 
 Generar claves criptográficas en diferentes lenguajes de programación es un proceso bastante sencillo y directo que aporta enormes beneficios a la seguridad de cualquier sistema.
