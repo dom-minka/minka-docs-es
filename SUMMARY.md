@@ -8,9 +8,9 @@
 
 ## Tutoriales
 
-* [Unirse al sistema de pagos en tiempo real](tutoriales/unirse-al-sistema-de-pagos-en-tiempo-real/README.md)
-  * [Ingreso a la herramienta de administración - Studio](tutoriales/unirse-al-sistema-de-pagos-en-tiempo-real/ingreso-a-la-herramienta-de-administracion-studio.md)
-  * [Descripción de Vistas](tutoriales/unirse-al-sistema-de-pagos-en-tiempo-real/descripcion-de-vistas.md)
+* [Unirse al sistema de pagos](tutoriales/unirse-al-sistema-de-pagos/README.md)
+  * [Ingreso a la herramienta de administración - Studio](tutoriales/unirse-al-sistema-de-pagos/ingreso-a-la-herramienta-de-administracion-studio.md)
+  * [Descripción de Vistas](tutoriales/unirse-al-sistema-de-pagos/descripcion-de-vistas.md)
 * [Creando el primer pago](tutoriales/creando-el-primer-pago/README.md)
   * [Instalación del CLI](tutoriales/creando-el-primer-pago/instalacion-del-cli.md)
   * [Conectándose al ledger](tutoriales/creando-el-primer-pago/conectandose-al-ledger.md)

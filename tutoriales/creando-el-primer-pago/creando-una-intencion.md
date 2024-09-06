@@ -2,7 +2,7 @@
 
 Con todo configurado y conectado, podemos crear nuestra primera intención de pago. Para esto, usaremos `Tesla Bank` para enviar un pago a un usuario desde nuestro propio banco. Podemos crear una intención de esta manera:
 
-> Para efectos del manual, se usa como banco de prueba `mintbank.dev`, usted deberá usar el nombre de la wallet que aparece en la [vista de Studio](../unirse-al-sistema-de-pagos-en-tiempo-real/descripcion-de-vistas.md)
+> Para efectos del manual, se usa como banco de prueba `mintbank.dev`, usted deberá usar el nombre de la wallet que aparece en la [vista de Studio](../unirse-al-sistema-de-pagos/descripcion-de-vistas.md)
 
 ```powershell
 ? minka intent create
