@@ -4,6 +4,8 @@ icon: webhook
 
 # Referencia API
 
+##
+
 La referencia de la API de Minka Ledger está basada en la especificación OpenAPI 3.0 y se puede encontrar aquí en formato YAML.
 
 {% file src="../../.gitbook/assets/minka-api-v2-es.yaml" %}
