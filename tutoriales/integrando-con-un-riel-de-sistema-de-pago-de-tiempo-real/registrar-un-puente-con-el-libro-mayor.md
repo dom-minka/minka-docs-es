@@ -10,7 +10,7 @@ Podemos registrar un nuevo puente en la página `Bridges` en Studio haciendo cli
 
 Necesitamos definir un nombre único (handle) para nuestra integración y necesitamos proporcionar una URL del servidor en el primer paso. Para el handle, usaremos `bridge@mintbank.dev` y usaremos la `Public URL` que se imprimió por el comando `minka bridge start`
 
-> Tenga presente que para esta guía usamos la billetera `mintbank.dev` la invitación que usted gestión en [unirse-al-sistema-de-pagos](../unirse-al-sistema-de-pagos/ "mention") será la billetera a la que debe asignar el puente (bridge)&#x20;
+> Tenga presente que para esta guía usamos la billetera `mintbank.dev` la invitación que usted gestión en [unirse-al-sistema-de-pagos-en-tiempo-real](../unirse-al-sistema-de-pagos-en-tiempo-real/ "mention") será la billetera a la que debe asignar el puente (bridge)&#x20;
 
 > Recuerde usar en los handles el dominio, para este ejemplo `bridge`@**dominio**
 
