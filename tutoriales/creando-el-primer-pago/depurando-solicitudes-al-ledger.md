@@ -175,5 +175,5 @@ Esto funciona para todos los comandos CLI, así que puedes usarlo para aprender 
 
 ## ¿Qué sigue?
 
-En el siguiente tutorial exploraremos cómo conectar un sistema bancario central a una red de pagos en tiempo real. Aprenderemos más sobre el protocolo de dos fases de confirmación que se utiliza para [sincronizar las operaciones entre los participantes de un sistema RTP](../orchestrando-flujos-usando-puentes/) de manera eficiente y confiable.
+En el siguiente tutorial exploraremos cómo conectar un sistema bancario central a una red de pagos en tiempo real. Aprenderemos más sobre el protocolo de dos fases de confirmación que se utiliza para [sincronizar las operaciones entre los participantes de un sistema RTP](../orchestrando-participantes-externos/) de manera eficiente y confiable.
 

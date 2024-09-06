@@ -81,7 +81,7 @@ Esperando nuevas solicitudes...
 
 > Deja el puente en ejecución y continúa el tutorial en una nueva terminal.
 
-Si seguiste los tutoriales anteriores, tu puente ya debería estar asignado a la billetera de tu banco. Si no es así, por favor consulta el tutorial [Integrando con un RTP](../orchestrando-flujos-usando-puentes/) para configurar esto.
+Si seguiste los tutoriales anteriores, tu puente ya debería estar asignado a la billetera de tu banco. Si no es así, por favor consulta el tutorial [Integrando con un RTP](../orchestrando-participantes-externos/) para configurar esto.
 
 Asignar un puente a una billetera declara al ledger que cada movimiento de saldo relacionado con esta billetera necesita **confirmación externa**.
 

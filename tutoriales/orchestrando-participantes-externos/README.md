@@ -2,7 +2,7 @@
 icon: circle-nodes
 ---
 
-# Integrando con un riel de sistema de pago de tiempo real
+# Orchestrando participantes externos
 
 La integración de sistemas bancarios centrales con otros sistemas de pagos suele ser un proyecto complejo y largo. En este tutorial, mostraremos un protocolo de confirmación en dos fases que nos permite sincronizar sistemas de pagos de manera eficiente y confiable.
 
