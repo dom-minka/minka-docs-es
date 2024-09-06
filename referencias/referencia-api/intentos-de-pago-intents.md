@@ -67,9 +67,3 @@ Los estados de intento de pago son y se realizan agregando pruebas (proofs) al i
 [minka-api-v2-es.yaml](../../.gitbook/assets/minka-api-v2-es.yaml)
 {% endswagger %}
 
-## Intents
-
-&#x20;Un intent en Minka Ledger es una intención de pago compuesta por varios transacciónes.&#x20;
-
-Los intents permiten la gestión de pagos de manera estructurada y segura.
-
