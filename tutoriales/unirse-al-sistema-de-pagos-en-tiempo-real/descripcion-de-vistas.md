@@ -54,6 +54,6 @@ Los círculos representan grupos de usuarios, los miembros de cada círculo tien
 
 ## ¿Qué sigue?
 
-A continuación, instalaremos la herramienta de línea de comandos de Minka y demostraremos cómo [podemos crear nuestro primer](../primer-pago/) pago en tiempo real.
+A continuación, instalaremos la herramienta de línea de comandos de Minka y demostraremos cómo [podemos crear nuestro primer](../creando-el-primer-pago/) pago en tiempo real.
 
 Puedes encontrar más detalles sobre cómo hacer esto en nuestros otros **tutoriales** y **guías prácticas**.
