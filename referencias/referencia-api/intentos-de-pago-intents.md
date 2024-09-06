@@ -26,17 +26,43 @@ Cada mensaje se estructura en formato JSON, similar a JWT, separando el objeto "
 
 Los intents garantizan la atomicidad de los cambios en el ledger, lo que significa que si hay múltiples cambios, todos se persistirán completamente o no se persistirá ningún cambio en absoluto.
 
-### Estados de intent
+### Claims (Transacciónes)
+
+Los intents se componen de claims que representan una transacción ejecutada dentro en el flujo de pago representado por el intent.
+
+Cada claim tiene una estructura simple que se utiliza para representar un cambio. Por ejemplo, un claim que representa una transferencia de dinero tendrá la siguiente estructura simple que incluye monto, moneda, tipo de transacción, fuente y desitno.&#x20;
+
+```json
+
+    "claims": [
+      {
+        "action": "transfer",
+        "amount": 4200,
+        "symbol": {
+          "handle": "usd"
+        },
+        "source": {
+          "handle": "svgs:1001001345@teslabank.io"
+        },
+        "target": {
+          "handle": "svgs:1001009422@mintbank.dev"
+        }
+      }
+    ],
+   
+```
+
+{% hint style="info" %}
+Este modelo permite construir interfaces que son agnósticas al caso de uso, la moneda o la red.
+{% endhint %}
+
+### Estados de intento de pago
 
 Los estados del intent se actualizan en función de las firmas o pruebas presentadas, lo que permite avanzar en su procesamiento hasta completarse o rechazarse.
 
-Las firma del intent es una prueba que garantiza la autenticidad e integridad del intent.&#x20;
+Las firma del intent es una prueba que garantiza la autenticidad e integridad de intento de pago.&#x20;
 
-{% hint style="info" %}
-En otras palabras, garantiza que el firmante es realmente el autor o testigo del intent y que está de acuerdo con él y que el intent no ha sido manipulado durante su transporte o mientras está almacenado.
-{% endhint %}
-
-Las firmas de los intents también son el mecanismo para lograr el acuerdo entre múltiples partes involucradas en el intent sin la necesidad de confiar en un mediador de terceros.&#x20;
+Las firmas de los intents también son el mecanismo para lograr el acuerdo entre múltiples partes involucradas en el flujo de pago sin la necesidad de confiar en un mediador de terceros.&#x20;
 
 En nuestro ejemplo de un intent de intercambio donde están involucradas 2 cuentas (wallets), se requerirán las firmas de los propietarios de ambas cuentas para poder validar el intent.
 
