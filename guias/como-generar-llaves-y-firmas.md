@@ -2,7 +2,7 @@
 icon: binary-lock
 ---
 
-# Cómo generar claves de firma
+# Cómo generar llaves y firmas
 
 Las solicitudes de cambios o escritura (POST) a Ledger siempre contienen objeto data diseñada para transmitir toda la información necesaria para realizar el cambio. Esta data esta encriptada con un llave privado generando un hash que permite verificar el author del cambio.&#x20;
 
@@ -14,7 +14,23 @@ Debido a esto, los cambios son más directas, seguras y no se pueden repudiar.&#
 Mas sobre conceptos de [autenticación](../explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-mediante-las-firmas.md) mediante firmas.&#x20;
 {% endhint %}
 
-### Algoritmos de generar las firmas
+### Generación de Llaves Privadas
+
+**Importar la biblioteca de criptografía**: Asegúrate de tener instalada una biblioteca que soporte la generación de claves Ed25519 (por ejemplo, `cryptography` en Python).
+
+**Generar el par de claves Ed25519**: Utiliza la función específica de la biblioteca para generar un par de claves (pública y privada).
+
+**Exportar las claves en formato raw y eliminar prefijos**: Convierte las claves generadas a formato raw, eliminas los prefijos específicos para obtener las claves en formato bruto, y luego codifica las claves en base64 para su uso.
+
+### Uso de Claves Privadas para Generar un Hash de Datos
+
+**Crear un hash de los datos**: Utiliza una función de hashing como SHA-256 para obtener un hash de los datos que quieres firmar.
+
+**Firmar el hash con la clave privada**: Usa la clave privada Ed25519 para firmar el hash del objeto de datos, asegurando la autenticidad y la integridad de la información.
+
+Estos pasos proporcionan un enfoque seguro para la generación y uso de claves criptográficas en la protección y autenticación de datos en un sistema de pagos.
+
+## Algoritmos de generar las firmas
 
 Estamos utilizando criptografía de curva elíptica estándar para crear llaves, verificar firmas y crear pruebas.
 
