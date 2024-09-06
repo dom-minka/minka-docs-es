@@ -124,6 +124,7 @@ Cada mensaje está estructurado en un formato similar a JWT, separando el objeto
 
 ```json
 {
+  "hash": { ... },
   "data": { ... },
   "meta": { ... }
 }
