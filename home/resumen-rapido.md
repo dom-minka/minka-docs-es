@@ -6,9 +6,11 @@ icon: person-running-fast
 
 ## Contexto
 
-Cada participante utiliza su propio libro mayor o "sistema core transaccional" conectado a una capa de integración con el sistemas de pagos para realizar transacciones.
+Cada participante tiene su propio "sistema core transaccional" para realizar transacciones internas.&#x20;
 
 El rol de sistema de pagos es facilitar y coordinar los pagos entre múltiples participantes, asegurando el procesamiento, el cumplimiento regulatorio, la compensación, la liquidación y la reconciliación.
+
+
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-09-03 at 10.21.08.png" alt=""><figcaption><p>Contexo de un sistema de pagos en tiempo real. </p></figcaption></figure>
 
