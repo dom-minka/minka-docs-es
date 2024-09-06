@@ -2,7 +2,7 @@
 icon: bridge
 ---
 
-# Construyendo un servicio puente
+# Construyendo un puente
 
 Este tutorial te muestra cómo conectar un banco a una red ACH basada en la nube construida utilizando el Minka Ledger. Para este propósito, implementaremos un servicio puente que conecta los sistemas centrales del banco con el Ledger en la nube.
 
