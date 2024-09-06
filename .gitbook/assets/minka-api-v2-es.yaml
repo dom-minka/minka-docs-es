@@ -12,7 +12,7 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: https://ldg-dev.one/api/v2
+  - url: https://ldg-dev.one/
 paths:
   /ledgers:
     post:
@@ -2721,7 +2721,7 @@ paths:
       - $ref: "#/components/parameters/ActiveLedger"
       - $ref: "#/components/parameters/LedgerAddressIdentifier"
     post:
-      summary: Enviar una prueba de procesamiento a intent.
+      summary: Sign an intent
       tags:
         - Intent
       requestBody:
@@ -2768,7 +2768,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApiUnexpectedError"
-      description: "Añade una firma a un intento identificado por el handle proporcionado. Si el intento con el handle proporcionado no existe, la API devolverá un error 404."
+      description: "Adds a signature to an intent identified by the provided `handle`. If the intent with the provided handle doesn't exist, API will return 404 error."
   /effects:
     parameters:
       - $ref: "#/components/parameters/ActiveLedger"
@@ -5526,15 +5526,15 @@ components:
           type: string
           description: Descripción personalizada del intento.
           example: "Primer intento de pago"
-          Source:
-            type: object
-            properties:
-              custom:
-                $ref: "#/components/schemas/SourceCustom"
-              handle:
-                type: string
-                description: El identificador del participante fuente.
-                example: "svgs:1001001345@teslabank.io"
+    Source:
+      type: object
+      properties:
+        custom:
+          $ref: "#/components/schemas/SourceCustom"
+        handle:
+          type: string
+          description: El identificador del participante fuente.
+          example: "svgs:1001001345@teslabank.io"
 
     SourceCustom:
       type: object
