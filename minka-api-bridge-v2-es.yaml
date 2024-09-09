@@ -187,7 +187,26 @@ components:
         description:
           type: string
           description: Descripción personalizada del intento.
+          required: true
           example: "Primer intento de pago"
+        device:
+          $ref: "#/components/schemas/Device"
+          required: false
+    Device:
+      type: object
+      properties:
+        deviceHash:
+          type: string
+          description: Hash del dispositivo
+          example: d7bb29de680d2b0c37f2c03215565307c60fbf7a8d15f253fa74d9d5f60fe632
+        deviceIp:
+          type: string
+          description: Dirrecion IP de dispositivo originador de Intento de pago
+          example:
+        deviceType:
+          type: string
+          description: Tipo de dispositivo (Mobile, Web, SecureChannel, AccessToken, ..)
+          example: Mobile # TODO: Add ISO reference options
     Source:
       type: object
       properties:
@@ -201,26 +220,37 @@ components:
     SourceCustom:
       type: object
       properties:
-        name:
+        person:
+          $ref: "#components/schemas/SourceCustomPerson"
+          required: false
+    SourceCustomPerson:
+      type: object
+      properties:
+        personType:
+          type: string
+          description: El tipo de entidad del participante fuente.
+          example: "Natural" # Add types of person - legal, natural based on ISO
+        personName:
           type: string
           description: El nombre del participante fuente.
-          example: "Nikola Tesla"
-        idType:
+          example: Nikola Tesla
+        personDocumentType:
           type: string
           description: El tipo de identificación del participante fuente.
+          # TODO: Add validations based on ISO
           example: "nidn"
-        idNumber:
+        personDocumentNumber:
           type: string
           description: El número de identificación del participante fuente.
           example: "429493434"
-        entityType:
+        personContactTel:
           type: string
-          description: El tipo de entidad del participante fuente.
-          example: "individual"
-        anchor:
+          description: Telefono de contacto
+          example: +385914242424
+        personContactEmail:
           type: string
           description: El punto de anclaje, como un método de contacto, del participante fuente.
-          example: "tel:385914242424"
+          example: nikola@tesla.hr
     Target:
       type: object
       properties:
@@ -234,26 +264,37 @@ components:
     TargetCustom:
       type: object
       properties:
-        name:
+        person:
+          #ref: '#/components/schemas/TargetCustomPerson'
+          required: false
+    TargetCustomPerson:
+      type: object
+      properties:
+        personType:
           type: string
-          description: El nombre del participante objetivo.
+          description: El tipo de entidad del participante fuente.
+          example: "Natural" # Add types of person - legal, natural based on ISO
+        personName:
+          type: string
+          description: El nombre del participante fuente.
           example: "Simon Bolivar"
-        idType:
+        personDocumentType:
           type: string
-          description: El tipo de identificación del participante objetivo.
+          description: El tipo de identificación del participante fuente.
+          # TODO: Add validations based on ISO
           example: "nidn"
-        idNumber:
+        personDocumentNumber:
           type: string
-          description: El número de identificación del participante objetivo.
-          example: "58252939"
-        entityType:
+          description: El número de identificación del participante fuente.
+          example: "429493434"
+        personContactTel:
           type: string
-          description: El tipo de entidad del participante objetivo.
-          example: "individual"
-        anchor:
+          description: Telefono de contacto
+          example: "+573504242424"
+        personContactEmail:
           type: string
-          description: El punto de anclaje, como un método de contacto, del participante objetivo.
-          example: "tel:573504242423"
+          description: El punto de anclaje, como un método de contacto, del participante fuente.
+          example: "simon@gmail.com"
     # We should add examples OneOf
     Symbol:
       type: object
