@@ -1,0 +1,335 @@
+openapi: 3.1.0
+info:
+  version: 2.14.0
+  title: Minka Ledger Protocol
+  description: |
+    Esta especificación cubre paths y componentes necesarios
+    para conectar un sistema de pagos utilizando el protocolo Minka.
+  termsOfService: http://minka.io/terms/
+  contact:
+    name: Minka API - Connect
+    email: api@minka.io
+    url: http://docs.minka.io
+  license:
+    name: Mozilla Public License 2.0
+    identifier: MPL-2.0
+    url: https://www.mozilla.org/en-US/MPL/2.0/
+servers:
+  - url: https://ldg-dev.one/api/v2
+    description: Development server
+  - url: https://ldg-stg.one/api/v2
+    description: Staging server
+paths:
+  /intents:
+    parameters:
+      - $ref: "#/components/parameters/ActiveLedger"
+    post:
+      summary: Crear un intento (intent)
+      operationId: createIntent
+      tags:
+        - Intent
+      requestBody:
+        description: Intent body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateIntentRequest"
+      responses:
+        "201":
+          description: Created Intent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateIntentResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthUnauthorizedError"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthForbiddenError"
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordDuplicatedError"
+        "422":
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/RecordSchemaInvalidError"
+                  - $ref: "#/components/schemas/CryptoHashInvalidError"
+                  - $ref: "#/components/schemas/RecordInvalidError"
+                  - $ref: "#/components/schemas/RecordRelationNotFoundError"
+                  - $ref: "#/components/schemas/CryptoSignatureInvalidError"
+        "500":
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiUnexpectedError"
+      description: Intento de pago
+components:
+  schemas:
+    CreateIntentRequest:
+      type: object
+      properties:
+        hash:
+          type: string
+          description: El hash único del intento.
+        data:
+          $ref: "#/components/schemas/IntentData"
+        meta:
+          type: object
+          properties:
+            proofs:
+              type: array
+              items:
+                $ref: "#/components/schemas/Proof"
+    IntentData:
+      type: object
+      properties:
+        handle:
+          type: string
+          description: El identificador del intento.
+          example: k3PdrLoh1m1BnKlr0Kou7
+        claims:
+          type: array
+          items:
+            $ref: "#/components/schemas/Claim"
+        schema:
+          type: string
+          description: Referencia a esquema de del intento.
+          example: transfer
+        custom:
+          $ref: "#/components/schemas/IntentCustom"
+        access:
+          type: array
+          items:
+            $ref: "#/components/schemas/Access"
+        config:
+          $ref: "#/components/schemas/Config"
+    Claim:
+      type: object
+      properties:
+        action:
+          type: string
+          description: Una transacion parte de inento de pago.
+          example: "transfer"
+        amount:
+          type: number
+          description: El monto asociado con la transaccion.
+          example: 4200
+        source:
+          $ref: "#/components/schemas/Source"
+        symbol:
+          $ref: "#/components/schemas/Symbol"
+        target:
+          $ref: "#/components/schemas/Target"
+    IntentMeta:
+      type: object
+      properties:
+        proofs:
+          type: array
+          items:
+            $ref: "#/components/schemas/Proof"
+          example:
+            - custom:
+                moment: "2024-08-30T03:34:19.425Z"
+                status: "created"
+              digest: "ccec86775d8b305c5bebeb228a4d6a86578bca526eea9ff11bb563359801c9d1"
+              method: "ed25519-v2"
+              public: "rpteZ4kOuiB6a9/KHCqOc8HcW5J20Hrb5D4ZCbZYpSE="
+              result: "1iuU0QxYh/FamG2F5c4qrk3+4nbMOz7MeIRzDiO4FZG2syIE4F1Xu7KgVk0qkwk9RENkXlOr468T34FgbHR7Bg=="
+            - custom:
+                luid: "$int.3vf2J78sptIkQr2lq"
+                moment: "2024-08-30T03:34:19.930Z"
+                status: "created"
+              digest: "3284fd20a02bdd8ef76bbae1e4ace97c7eda9e912e9c108025344e772484cd5b"
+              method: "ed25519-v2"
+              public: "MrByXmC5wKLCV0irkNlLTeO/DmmyI0xVPwI29Os2njQ="
+              result: "11AST4aUMNBxU0SrBBYUXuqDoGs07bPYOgmVm3+DZ5J1URDgneKJInVNCYgOH70oP/mdLnMzr5fC9OB27ZiECQ=="
+        routed:
+          type: boolean
+          description: Indica si el intento fue enrutado.
+          example: true
+        status:
+          type: string
+          description: El estado del intento.
+          example: "completed"
+        thread:
+          type: string
+          description: El identificador del hilo.
+          example: "7RFbLLoTabUa7zX1W"
+        moment:
+          type: string
+          format: date-time
+          description: La marca de tiempo del evento meta.
+          example: "2024-08-30T03:34:19.938Z"
+        owners:
+          type: array
+          items:
+            type: string
+            description: Las claves públicas de los propietarios.
+            example: "rpteZ4kOuiB6a9/KHCqOc8HcW5J20Hrb5D4ZCbZYpSE="
+    IntentCustom:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción personalizada del intento.
+          required: true
+          example: "Primer intento de pago"
+        device:
+          $ref: "#/components/schemas/Device"
+          required: false
+    Device:
+      type: object
+      properties:
+        deviceHash:
+          type: string
+          description: Hash del dispositivo
+          example: d7bb29de680d2b0c37f2c03215565307c60fbf7a8d15f253fa74d9d5f60fe632
+        deviceIp:
+          type: string
+          description: Dirrecion IP de dispositivo originador de Intento de pago
+          example:
+        deviceType:
+          type: string
+          description: Tipo de dispositivo (Mobile, Web, SecureChannel, AccessToken, ..)
+          example: Mobile # TODO: Add ISO reference options
+    Source:
+      type: object
+      properties:
+        custom:
+          $ref: "#/components/schemas/SourceCustom"
+        handle:
+          type: string
+          description: El identificador del participante fuente.
+          example: "svgs:1001001345@teslabank.io"
+    # TODO: Source custom should have OneOf options
+    SourceCustom:
+      type: object
+      properties:
+        person:
+          $ref: "#components/schemas/SourceCustomPerson"
+          required: false
+    SourceCustomPerson:
+      type: object
+      properties:
+        personType:
+          type: string
+          description: El tipo de entidad del participante fuente.
+          example: "Natural" # Add types of person - legal, natural based on ISO
+        personName:
+          type: string
+          description: El nombre del participante fuente.
+          example: Nikola Tesla
+        personDocumentType:
+          type: string
+          description: El tipo de identificación del participante fuente.
+          # TODO: Add validations based on ISO
+          example: "nidn"
+        personDocumentNumber:
+          type: string
+          description: El número de identificación del participante fuente.
+          example: "429493434"
+        personContactTel:
+          type: string
+          description: Telefono de contacto
+          example: +385914242424
+        personContactEmail:
+          type: string
+          description: El punto de anclaje, como un método de contacto, del participante fuente.
+          example: nikola@tesla.hr
+    Target:
+      type: object
+      properties:
+        custom:
+          $ref: "#/components/schemas/TargetCustom"
+        handle:
+          type: string
+          description: El identificador del participante objetivo.
+          example: "svgs:1001009422@mintbank.dev"
+    # TODO: Target custom should have OneOf (maybe whole object)
+    TargetCustom:
+      type: object
+      properties:
+        person:
+          #ref: '#/components/schemas/TargetCustomPerson'
+          required: false
+    TargetCustomPerson:
+      type: object
+      properties:
+        personType:
+          type: string
+          description: El tipo de entidad del participante fuente.
+          example: "Natural" # Add types of person - legal, natural based on ISO
+        personName:
+          type: string
+          description: El nombre del participante fuente.
+          example: "Simon Bolivar"
+        personDocumentType:
+          type: string
+          description: El tipo de identificación del participante fuente.
+          # TODO: Add validations based on ISO
+          example: "nidn"
+        personDocumentNumber:
+          type: string
+          description: El número de identificación del participante fuente.
+          example: "429493434"
+        personContactTel:
+          type: string
+          description: Telefono de contacto
+          example: "+573504242424"
+        personContactEmail:
+          type: string
+          description: El punto de anclaje, como un método de contacto, del participante fuente.
+          example: "simon@gmail.com"
+    # We should add examples OneOf
+    Symbol:
+      type: object
+      properties:
+        handle:
+          type: string
+          description: El identificador del símbolo de la moneda.
+          example: "usd"
+parameters:
+  ActiveLedger:
+    name: x-ledger
+    in: header
+    required: false
+    schema:
+      oneOf:
+        - $ref: "#/components/schemas/Handle"
+        - $ref: "#/components/schemas/Luid"
+    description: La identificación única de Ledger en el contexto de solicitudes multi-tenant.
+  Handle:
+    type: string
+    pattern: '^(?!\$[a-z]{3}\.)[a-zA-Z0-9_\-:.=$/+]+$'
+    example: ach
+    description: |
+      String que representa un identificador de registro de ledger dado por el creador del registro.
+      Handle puede consistir en letras minúsculas y mayúsculas, dígitos y caracteres especiales: _, -, :, ., =, $, /, +.
+      Handle no debe comenzar con el prefijo '$<3 letras>.' porque este patrón está designado para luid.
+      Handle no puede contener signos @ porque no se puede agregar a un dominio principal.
+      Los registros que admiten dominios deben usar direcciones (esquema Address).
+  Luid:
+    type: string
+    pattern: '^\$[a-z]{3}\.[A-Za-z0-9_-]{17}$'
+    example: $wlt.7mSVWFKX-Tfx2NsNj
+    description: |
+      String que representa un identificador único de registro de contabilidad.
+      Es generado por el "ledger" cuando se almacena el registro.
+      Su patrón está definido por: $<abreviatura de 3 caracteres del tipo de registro>.<17 caracteres aleatorios>.
+      La abreviatura del tipo de registro son 3 letras minúsculas para una lista predefinida de registros.
+      Los caracteres aleatorios pueden ser letras minúsculas y mayúsculas, dígitos, _ y -.

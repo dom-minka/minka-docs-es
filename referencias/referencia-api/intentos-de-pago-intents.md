@@ -30,7 +30,7 @@ Los intents garantizan la atomicidad de los cambios en el ledger, lo que signifi
 
 Los intents se componen de claims que representan una transacción ejecutada dentro en el flujo de pago representado por el intent.
 
-Cada claim tiene una estructura simple que se utiliza para representar un cambio. Por ejemplo, un claim que representa una transferencia de dinero tendrá la siguiente estructura simple que incluye monto, moneda, tipo de transacción, fuente y desitno.&#x20;
+Cada claim tiene una estructura simple que se utiliza para representar un cambio. Por ejemplo, un claim que representa una transferencia de dinero tendrá la siguiente estructura simple que incluye monto, moneda, tipo de transacción, fuente y desitno.
 
 ```json
 
@@ -60,9 +60,9 @@ Este modelo permite construir interfaces que son agnósticas al caso de uso, la 
 
 Los estados del intent se actualizan en función de las firmas o pruebas presentadas, lo que permite avanzar en su procesamiento hasta completarse o rechazarse.
 
-Las firma del intent es una prueba que garantiza la autenticidad e integridad de intento de pago.&#x20;
+Las firma del intent es una prueba que garantiza la autenticidad e integridad de intento de pago.
 
-Las firmas de los intents también son el mecanismo para lograr el acuerdo entre múltiples partes involucradas en el flujo de pago sin la necesidad de confiar en un mediador de terceros.&#x20;
+Las firmas de los intents también son el mecanismo para lograr el acuerdo entre múltiples partes involucradas en el flujo de pago sin la necesidad de confiar en un mediador de terceros.
 
 En nuestro ejemplo de un intent de intercambio donde están involucradas 2 cuentas (wallets), se requerirán las firmas de los propietarios de ambas cuentas para poder validar el intent.
 
@@ -80,14 +80,6 @@ Los estados de intento de pago son y se realizan agregando pruebas (proofs) al i
 
 ## Referencia API
 
-{% swagger src="minka-api-bridge-v2-es.yaml" path="/intents" method="post" %}
-[minka-api-bridge-v2-es.yaml](./minka-api-v2-es.yaml)
-{% endswagger %}
-
-{% swagger src="minka-api-bridge-v2-es.yaml" path="/intents/{id}" method="get" %}
-[minka-api-bridge-v2-es.yaml](./minka-api-v2-es.yaml)
-{% endswagger %}
-
-{% swagger src="minka-api-bridge-v2-es.yaml" path="/intents/{id}/proofs" method="post" %}
-[minka-api-bridge-v2-es.yaml](minka-api-v2-es.yaml)
+{% swagger src="../../.gitbook/assets/minka-api-bridge-v2-es.yaml" path="/intents" method="post" %}
+[minka-api-bridge-v2-es.yaml](../../.gitbook/assets/minka-api-bridge-v2-es.yaml)
 {% endswagger %}
