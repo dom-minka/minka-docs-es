@@ -16,7 +16,7 @@
   * [Conectándose al ledger](tutoriales/creando-el-primer-pago/conectandose-al-ledger.md)
   * [Creando una intención](tutoriales/creando-el-primer-pago/creando-una-intencion.md)
   * [Depurando solicitudes al ledger](tutoriales/creando-el-primer-pago/depurando-solicitudes-al-ledger.md)
-* [Orchestrando participantes externos](tutoriales/integrando-con-un-riel-de-sistema-de-pago-de-tiempo-real/README.md)
+* [Orquestrando participantes externos](tutoriales/integrando-con-un-riel-de-sistema-de-pago-de-tiempo-real/README.md)
   * [Creación de una clave privada](tutoriales/integrando-con-un-riel-de-sistema-de-pago-de-tiempo-real/creacion-de-una-clave-privada.md)
   * [Iniciar un puente local](tutoriales/integrando-con-un-riel-de-sistema-de-pago-de-tiempo-real/iniciar-un-puente-local.md)
   * [Registrar un puente con el libro mayor](tutoriales/integrando-con-un-riel-de-sistema-de-pago-de-tiempo-real/registrar-un-puente-con-el-libro-mayor.md)
