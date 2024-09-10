@@ -80,14 +80,14 @@ Los estados de intento de pago son y se realizan agregando pruebas (proofs) al i
 
 ## Referencia API
 
-{% swagger src="../minka-api-bridge-v2-es.yaml" path="/intents" method="post" %}
-[minka-api-bridge-v2-es.yaml](../minka-api-v2-es.yaml)
+{% swagger src="minka-api-bridge-v2-es.yaml" path="/intents" method="post" %}
+[minka-api-bridge-v2-es.yaml](./minka-api-v2-es.yaml)
 {% endswagger %}
 
-{% swagger src="../minka-api-bridge-v2-es.yaml" path="/intents/{id}" method="get" %}
-[minka-api-bridge-v2-es.yaml](../minka-api-v2-es.yaml)
+{% swagger src="minka-api-bridge-v2-es.yaml" path="/intents/{id}" method="get" %}
+[minka-api-bridge-v2-es.yaml](./minka-api-v2-es.yaml)
 {% endswagger %}
 
-{% swagger src="../minka-api-bridge-v2-es.yaml" path="/intents/{id}/proofs" method="post" %}
-[minka-api-bridge-v2-es.yaml](../minka-api-v2-es.yaml)
+{% swagger src="minka-api-bridge-v2-es.yaml" path="/intents/{id}/proofs" method="post" %}
+[minka-api-bridge-v2-es.yaml](minka-api-v2-es.yaml)
 {% endswagger %}
