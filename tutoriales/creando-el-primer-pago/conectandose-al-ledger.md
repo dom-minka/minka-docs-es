@@ -27,4 +27,4 @@ $ minka  login
 ✅ Logged in as teslabank.
 ```
 
-> La contraseña para **teslabank** es `tesla`.
+> La <mark style="color:red;">contraseña</mark> para **teslabank** es **`tesla`**.
