@@ -12,9 +12,30 @@ El rol de sistema de pagos es facilitar y coordinar los pagos entre múltiples p
 
 
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-09-03 at 10.21.08.png" alt=""><figcaption><p>Contexo de un sistema de pagos en tiempo real. </p></figcaption></figure>
+```mermaid fullWidth="false"
+graph LR
+  bs["Banco Origen"]
+  mws["Puente Origen"]
+  bt["Banco Destino"] 
+  mwt["Puente Destino"]
+  spbvi["SPBVI"]
 
-Para conectarse a un sistema de pago en tiempo real usando el protocolo de Minka, el proceso es sencillo y se basa en tecnologías web. Requiere crear una simple capa de integración que internamente llamamos "puente" que debe poder:
+
+ subgraph Origen 
+   mws --> bs
+    
+  end
+  bs -- Inicia orden de pago --> spbvi
+  spbvi -- Orquesta debito --> mws
+  spbvi -- Orquesta credito --> mwt
+ 
+  subgraph Destino
+    mwt --> bt
+  end
+
+```
+
+Para conectarse a un sistema de pago en tiempo real usando el protocolo de Minka, el proceso es sencillo y se basa en tecnologías web. Requiere crear una simple capa de integración que internamente llamamos "puente" (Bridge) que debe poder:
 
 **Iniciar pagos** utilizando una única interfaz aplicativa para todos los casos de uso (POST /intents).
 
@@ -36,7 +57,7 @@ Actualizar su **interfaz aplicativo o app** para habilitar pagos y notificacione
 
 ## El Protocolo
 
-El protocolo de Minka define los flujos,  el formato de mensajería, la capa de seguridad, y la capa de comunicación.&#x20;
+&#x20;El protocolo de Minka define los flujos,  el formato de mensajería, la capa de seguridad, y la capa de comunicación.&#x20;
 
 El sistema de pagos funciona combinado un "libro mayor" en la nube y el protocolo que permite crear o integrar sistemas de pagos en días, no en meses o años.
 
@@ -70,7 +91,7 @@ Una intención de pago es un concepto crucial en los sistemas de pago modernos, 
 
 Esto asegura que toda la información necesaria para la transacción se recopile y valide de antemano, mejorando significativamente la seguridad y ejecución de los pagos.
 
-Para iniciar una orden de pago se usa el metodo POST en el recurso /v2/intents:
+Para iniciar una orden de pago se usa el método POST en el recurso /v2/intents:
 
 #### Preparación y Confirmación del Pago
 
@@ -141,13 +162,13 @@ Ejemplo de envío de una cuenta de banco rojo a banco azul usando pesos colombia
 ```json
     "action": "payment",
     "source": {
-      "handle": "tran:42424242@redbank.co",
+      "handle": "caho:42424242@redbank.co",
       "custom": {
 	      "fullName": "Nikola Tesla"
 	    }
     },
     "target": {
-    	"handle": "tran:42424243@bluebank.co",
+    	"handle": "caho:42424243@bluebank.co",
       "custom": {
 	       "fullName": "Azahar Cafe"
 	    }

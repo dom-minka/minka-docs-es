@@ -27,4 +27,4 @@ $ minka  login
 ✅ Logged in as teslabank.
 ```
 
-> La <mark style="color:red;">contraseña</mark> para **teslabank** es **`tesla`**.
+> :bulb: La <mark style="color:orange;">contraseña</mark> para **teslabank** es **`tesla`**.

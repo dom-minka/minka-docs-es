@@ -47,13 +47,13 @@ Headers:
         "action": "transfer",
         "amount": 1200,
         "source": {
-          "handle": "svgs:1001001345@teslabank.io"
+          "handle": "caho:1001001345@teslabank.io"
         },
         "symbol": {
           "handle": "usd"
         },
         "target": {
-          "handle": "svgs:1001009422@mintbank.dev"
+          "handle": "caho:1001009422@mintbank.dev"
         }
       }
     ],
@@ -149,8 +149,8 @@ Handle: jqWRNXPwvY3TUQnPVyPDO
 Schema: transfer
 
 Action: transfer
- - Source: svgs:1001001345@teslabank.io
- - Target: svgs:1001009422@mintbank.dev
+ - Source: caho:1001001345@teslabank.io
+ - Target: caho:1001009422@mintbank.dev
  - Symbol: usd
  - Amount: $12.00
 
