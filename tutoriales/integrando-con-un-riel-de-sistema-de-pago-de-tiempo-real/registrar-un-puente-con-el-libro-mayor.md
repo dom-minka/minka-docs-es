@@ -13,6 +13,8 @@ Necesitamos definir un nombre único (handle) para nuestra integración y necesi
 > Tenga presente que para esta guía usamos la billetera `mintbank.dev` la invitación que usted gestión en [unirse-al-sistema-de-pagos-en-tiempo-real](../unirse-al-sistema-de-pagos-en-tiempo-real/ "mention") será la billetera a la que debe asignar el puente (bridge)&#x20;
 
 > Recuerde usar en los handles el dominio, para este ejemplo `bridge`@**dominio**
+>
+> Tenga presente que la URL debe terminar en /v2
 
 <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>Datos del puente</p></figcaption></figure>
 
