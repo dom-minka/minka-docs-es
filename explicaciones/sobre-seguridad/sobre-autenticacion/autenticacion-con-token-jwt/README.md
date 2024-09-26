@@ -112,4 +112,4 @@ const anotherRequest = {
 
 Aún necesitamos verificar los permisos de esas claves públicas para asegurarnos de que están autorizadas para realizar la operación requerida.
 
-Consulte [Acerca de la Autorización](../sobre-autorizacion.md) para más detalles sobre la autorización.
+Consulte [Acerca de la Autorización](../../sobre-autorizacion.md) para más detalles sobre la autorización.

@@ -11,7 +11,7 @@ El mecanismo de seguridad principal para validar los cambios está contenido en 
 Debido a esto, los cambios son más directas, seguras y no se pueden repudiar.&#x20;
 
 {% hint style="info" %}
-Para lectura (GET) pueden usar autenticación con [`token JWT.` ](autenticacion-con-token-jwt.md)
+Para lectura (GET) pueden usar autenticación con [`token JWT.` ](autenticacion-con-token-jwt/)
 {% endhint %}
 
 Por ejemplo, el cuerpo de una solicitud para crear una Billetera se ve así:

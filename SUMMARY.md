@@ -63,6 +63,7 @@
 * [Sobre seguridad](explicaciones/sobre-seguridad/README.md)
   * [Sobre autenticación](explicaciones/sobre-seguridad/sobre-autenticacion/README.md)
     * [Autenticación mediante las firmas](explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-mediante-las-firmas.md)
-    * [Autenticación con token JWT](explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-con-token-jwt.md)
+    * [Autenticación con token JWT](explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-con-token-jwt/README.md)
+      * [Como autenticar con JWT](explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-con-token-jwt/como-autenticar-con-jwt.md)
   * [Sobre autorización](explicaciones/sobre-seguridad/sobre-autorizacion.md)
   * [Sobre políticas de seguridad](explicaciones/sobre-seguridad/sobre-politicas-de-seguridad.md)

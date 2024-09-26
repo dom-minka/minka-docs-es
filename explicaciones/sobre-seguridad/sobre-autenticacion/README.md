@@ -24,7 +24,7 @@ A diferencia de la criptografía simétrica, donde se utiliza una sola clave par
 
 Existen dos tipos principales de solicitudes en el Libro Mayor: mutaciones y lecturas. Las mutaciones son solicitudes que implican la creación o modificación de un registro en el Libro Mayor.
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td>Autenticación mediante las firmas</td><td></td><td></td><td><a href="autenticacion-mediante-las-firmas.md">autenticacion-mediante-las-firmas.md</a></td></tr><tr><td>Autenticación con token JWT</td><td></td><td></td><td><a href="autenticacion-con-token-jwt.md">autenticacion-con-token-jwt.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td>Autenticación mediante las firmas</td><td></td><td></td><td><a href="autenticacion-mediante-las-firmas.md">autenticacion-mediante-las-firmas.md</a></td></tr><tr><td>Autenticación con token JWT</td><td></td><td></td><td><a href="autenticacion-con-token-jwt/">autenticacion-con-token-jwt</a></td></tr></tbody></table>
 
 Utilizando criptografía asimétrica, la plataforma garantiza la distribución de la seguridad a cada participante, proporcionando autenticación altamente segura, no repudio y reduciendo significativamente la posibilidad de una brecha de seguridad.
 
