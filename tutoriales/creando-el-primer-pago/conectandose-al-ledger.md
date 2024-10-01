@@ -20,7 +20,7 @@ La URL del ledger requerida como entrada tiene el formato `https://<ledger>.<ser
 Podemos probar que todo está funcionando correctamente iniciando sesión como un banco de prueba. Nuestro ledger RTP viene con un banco de prueba preconfigurado, el nombre de este banco es Tesla Bank (`teslabank`). Para iniciar sesión como este banco, usa el siguiente comando:
 
 ```
-$ minka  login
+$ minka ledger login
 ? Signer: teslabank
 ? Signer password for teslabank *[hidden]*
 
