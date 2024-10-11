@@ -48,6 +48,7 @@
 * [Referencia API](referencias/referencia-api/README.md)
   * [Intentos de pago (intents)](referencias/referencia-api/intentos-de-pago-intents.md)
   * [Débitos y Créditos (bridge)](referencias/referencia-api/debitos-y-creditos-bridge.md)
+  * [intentos de Pago - Itents](referencias/referencia-api/intentos-de-pago-itents.md)
 * [Referencia Errores](referencias/referencia-errores/README.md)
   * [Errores de seguridad](referencias/referencia-errores/errores-de-seguridad.md)
   * [Errores genéricos de API](referencias/referencia-errores/errores-genericos-de-api.md)
