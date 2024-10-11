@@ -2,11 +2,9 @@
 icon: money-bill-1
 ---
 
-# Intentos de pago (intents)
+# intentos de Pago (Intents)
 
-## Contexto
-
-### Intentos de pago
+#### Intentos de pago
 
 Los intentos de pago (intents) constituyen un mecanismo para ejecutar modificaciones en el sistema de pago (ledger). Las modificaciones más frecuentes implican transferencias de saldos entre cuentas (wallets) en el sistema de pago en tiempo real, que pueden pertenecer a participantes directos o terceros conectados al sistema.
 
@@ -26,7 +24,7 @@ Cada mensaje se estructura en formato JSON, similar a JWT, separando el objeto "
 
 Los intents garantizan la atomicidad de los cambios en el ledger, lo que significa que si hay múltiples cambios, todos se persistirán completamente o no se persistirá ningún cambio en absoluto.
 
-### Claims (Transacciónes)
+#### Claims (Transacciónes)
 
 Los intents se componen de claims que representan una transacción ejecutada dentro en el flujo de pago representado por el intent.
 
@@ -56,7 +54,7 @@ Cada claim tiene una estructura simple que se utiliza para representar un cambio
 Este modelo permite construir interfaces que son agnósticas al caso de uso, la moneda o la red.
 {% endhint %}
 
-### Estados de intento de pago
+#### Estados de intento de pago
 
 Los estados del intent se actualizan en función de las firmas o pruebas presentadas, lo que permite avanzar en su procesamiento hasta completarse o rechazarse.
 
@@ -77,9 +75,3 @@ Los estados de intento de pago son y se realizan agregando pruebas (proofs) al i
 | `Committed` | El intent se procesó con éxito. Los cambios en los datos del ledger están persistidos y son irreversibles. Eventualmente se completará. |
 | `Completed` | El intent se procesó correctamente.                                                                                                     |
 | `Rejected`  | El procesamiento del intent falló. Los cambios en los datos del ledger son rechazados y no pueden ser persistidos.                      |
-
-## Referencia API
-
-{% swagger src="../../.gitbook/assets/minka-api-bridge-v2-es.yaml" path="/intents" method="post" %}
-[minka-api-bridge-v2-es.yaml](../../.gitbook/assets/minka-api-bridge-v2-es.yaml)
-{% endswagger %}
