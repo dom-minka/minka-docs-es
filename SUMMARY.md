@@ -59,7 +59,9 @@
 ## Explicaciones
 
 * [Sobre conceptos basicos](explicaciones/sobre-conceptos-basicos/README.md)
-  * [Intentos de pagos](explicaciones/sobre-conceptos-basicos/intentos-de-pagos.md)
+  * [Intentos de pagos](explicaciones/sobre-conceptos-basicos/intentos-de-pagos/README.md)
+    * [Estados](explicaciones/sobre-conceptos-basicos/intentos-de-pagos/estados.md)
+* [Page](explicaciones/page.md)
 * [Sobre seguridad](explicaciones/sobre-seguridad/README.md)
   * [Sobre autenticación](explicaciones/sobre-seguridad/sobre-autenticacion/README.md)
     * [Autenticación mediante las firmas](explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-mediante-las-firmas.md)
