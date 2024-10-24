@@ -6,8 +6,8 @@ Para empezar, intentemos crear una solicitud que debería fallar porque no hay s
 as$ minka intent create
 ? Handle: huz1JQ-sWTxP1A_Lc
 ? Action: transfer
-? Source: account:3@mint
-? Target: account:1@mint
+? Source: svgs:3@mintbank.dev
+? Target: asvgs:1@mintbank.dev
 ? Symbol: usd
 ? Amount: 10
 ? Add another action? No
@@ -19,8 +19,8 @@ Intent summary:
 Handle: huz1JQ-sWTxP1A_Lc
 
 Action: transfer
- - Source: account:3@mint
- - Target: account:1@mint
+ - Source: svgs:3@mintbank.dev
+ - Target: asvgs:1@mintbank.dev
  - Symbol: usd
  - Amount: $10.00
 

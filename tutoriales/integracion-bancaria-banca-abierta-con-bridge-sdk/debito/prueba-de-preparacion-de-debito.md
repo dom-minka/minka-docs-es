@@ -1,31 +1,31 @@
 # Prueba de preparación de débito
 
-Para probar el código anterior, crearemos una nueva intención que enviará dinero desde `account:1@mint` a `account:73514@tesla`.
+Para probar el código anterior, crearemos una nueva intención que enviará dinero desde `svgs:1@mintbank.dev` a `svgs:73514@teslabank.io`.
 
 ```bash
 $ minka intent create
 ? Handle: yKnJ6gRKEy5voiXb6
 ? Action: transfer
-? Source: account:2@mint
-? Target: account:73514@tesla
+? Source: svgs:1@mintbank.dev
+? Target: svgs:73514@teslabank.io
 ? Symbol: usd
 ? Amount: 10
 ? Add another action? No
 ? Add custom data? No
-? Signers: mint
-? Key password for tesla: *[hidden]*
+? Signers: bridge@mintbank.dev
+? Key password for teslabank: *[hidden]*
 
 Intent summary:
 ------------------------------------------------------------------------
 Handle: yKnJ6gRKEy5voiXb6
 
 Action: transfer
- - Source: account:2@mint
- - Target: account:73514@tesla
+ - Source: svgs:1@mintbank.dev
+ - Target: svgs:73514@teslabank.io
  - Symbol: usd
  - Amount: $10.00
 
-? Sign this intent using signer mint? Yes
+? Sign this intent using signer bridge@mintbank.dev? Yes
 
 ✅ Intent signed and sent to ledger sandbox
 Intent status: pending

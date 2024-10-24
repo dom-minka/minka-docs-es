@@ -6,8 +6,8 @@ Finalmente, creemos una intención que debería fallar porque la cuenta de desti
 $ minka intent create
 ? Handle: xwt2O_ONnGDsp8TtV
 ? Action: transfer
-? Source: account:2@mint
-? Target: account:4@mint
+? Source: svgs:2@mintbank.dev
+? Target: svgs:4@mintbank.dev
 ? Symbol: usd
 ? Amount: 10
 ? Add another action? No
@@ -19,8 +19,8 @@ Intent summary:
 Handle: xwt2O_ONnGDsp8TtV
 
 Action: transfer
- - Source: account:2@mint
- - Target: account:4@mint
+ - Source: svgs:2@mintbank.dev
+ - Target: svgs:4@mintbank.dev
  - Symbol: usd
  - Amount: $10.00
 

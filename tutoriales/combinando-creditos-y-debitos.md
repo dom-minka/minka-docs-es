@@ -16,8 +16,8 @@ Intentemos enviar algo de dinero de la cuenta 2 a la cuenta 1. En realidad, prob
 $ minka intent create
 ? Handle: knJOdFbP9K_WIr6ZN
 ? Action: transfer
-? Source: account:2@mint
-? Target: account:1@mint
+? Source: svgs:2@mintbank.dev
+? Target: svgs:1@mintbank.dev
 ? Symbol: usd
 ? Amount: 10
 ? Add another action? No
@@ -30,8 +30,8 @@ Intent summary:
 Handle: knJOdFbP9K_WIr6ZN
 
 Action: transfer
- - Source: account:2@mint
- - Target: account:1@mint
+ - Source: svgs:2@mintbank.dev
+ - Target: svgs:1@mintbank.dev
  - Symbol: usd
  - Amount: $10.00
 
