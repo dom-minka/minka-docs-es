@@ -1,5 +1,6 @@
 ---
 icon: bridge
+hidden: true
 ---
 
 # Construyendo un puente

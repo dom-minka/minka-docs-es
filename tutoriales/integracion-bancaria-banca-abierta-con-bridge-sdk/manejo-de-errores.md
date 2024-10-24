@@ -1,6 +1,6 @@
 # Manejo de errores
 
-Hasta ahora hemos ignorado en su mayoría los errores o simplemente hemos devuelto valores genéricos. Sin embargo, necesitamos manejar los errores en algún momento. Para empezar, puedes consultar la [Referencia de errores](../referencias/referencia-errores/errores-nivel-de-puente.md).
+Hasta ahora hemos ignorado en su mayoría los errores o simplemente hemos devuelto valores genéricos. Sin embargo, necesitamos manejar los errores en algún momento. Para empezar, puedes consultar la [Referencia de errores](../../referencias/referencia-errores/errores-nivel-de-puente.md).
 
 Para nosotros habrá dos tipos principales de errores. Los que responderemos directamente a todas las solicitudes de Entrada, Acción e Intención (que incluyen códigos de estado HTTP y códigos de error del Libro Mayor) y los que responderemos después del procesamiento (enviando firmas).
 
