@@ -31,7 +31,7 @@
   * [Interfaz del Bridge](tutoriales/integracion-bancaria-banca-abierta-con-bridge-sdk/interfaz-del-bridge.md)
   * [Simular el núcleo bancario](tutoriales/integracion-bancaria-banca-abierta-con-bridge-sdk/simular-el-nucleo-bancario.md)
   * [Extracción de datos de la solicitud](tutoriales/integracion-bancaria-banca-abierta-con-bridge-sdk/extraccion-de-datos-de-la-solicitud.md)
-  * [Credito](tutoriales/integracion-bancaria-banca-abierta-con-bridge-sdk/credito/README.md)
+  * [Crédito](tutoriales/integracion-bancaria-banca-abierta-con-bridge-sdk/credito/README.md)
     * [Procesamiento de una entrada de crédito](tutoriales/integracion-bancaria-banca-abierta-con-bridge-sdk/credito/procesamiento-de-una-entrada-de-credito.md)
     * [Procesamiento de solicitudes](tutoriales/integracion-bancaria-banca-abierta-con-bridge-sdk/credito/procesamiento-de-solicitudes.md)
     * [Entrada de Crédito](tutoriales/integracion-bancaria-banca-abierta-con-bridge-sdk/credito/entrada-de-credito.md)

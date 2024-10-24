@@ -2,35 +2,40 @@
 
 Para extraer datos de las solicitudes, utilizaremos un par de funciones que colocaremos en `src/extractor.ts`. Por supuesto, los datos de la solicitud también deben ser validados.
 
-
+> Actualice la siguiente constante:
+>
+> ```
+> const BANK_WALLET =["[Nombre de su wallet]"];
+> ```
 
 ```typescript
-// Rellena esto con el identificador de la billetera que creaste, debería ser una variable de entorno
-const BANK_WALLET = "mint";
-
-// El factor para usd es 100
+// Populate this with the wallet handle you created, should be env var
+const BANK_WALLET =["[Nombre de su wallet]"];
+const SCHEMAS = ["caho", "ccte","dbmo","svgs"];
+const SYMBOLS= ["usd","cop"];
+// Factor for usd is 100
 const USD_FACTOR = 100;
 
-// Expresión regular de dirección utilizada para validación y extracción de componentes
-const ADDRESS_REGEX = /^(((?<schema>[a-zA-Z0-9_\-+.]+):)?(?<handle>[a-zA-Z0-9_\-+.]+))(@(?<parent>[a-zA-Z0-9_\-+.]+))?$/;
+// Address regex used for validation and component extraction
+const ADDRESS_REGEX =/^(((?<schema>[a-zA-Z0-9_\-+.]+):)?(?<handle>[a-zA-Z0-9_\-+.]+))(@(?<parent>[a-zA-Z0-9_\-+.]+))?$/;   
 
 export function extractAndValidateAddress(address: string) {
   const result = ADDRESS_REGEX.exec(address);
   if (!result?.groups) {
-    throw new Error(`Dirección inválida, se recibió ${address}`);
+    throw new Error(`Invalid address, got ${address}`);
   }
   const { schema, handle: account, parent } = result.groups;
-
-  if (parent !== BANK_WALLET) {
+  
+  if (!BANK_WALLET.find(s=> s==parent)) {
     throw new Error(
-      `Se esperaba que el padre de la dirección fuera ${BANK_WALLET}, se recibió ${parent}`
+      `Expected address parent to be ${BANK_WALLET}, got ${parent}`
     );
   }
-  if (schema !== "account") {
-    throw new Error(`Se esperaba que el esquema de la dirección fuera account, se recibió ${schema}`);
+  if (!SCHEMAS.find(s=> s==schema)) {
+    throw new Error(`Expected address schema to be ${SCHEMAS}, got ${schema}`);
   }
   if (!account || account.length === 0) {
-    throw new Error("Falta la cuenta en la solicitud de crédito");
+    throw new Error("Account missing from credit request");
   }
 
   return {
@@ -43,16 +48,16 @@ export function extractAndValidateAddress(address: string) {
 export function extractAndValidateAmount(rawAmount: number) {
   const amount = Number(rawAmount);
   if (!Number.isInteger(amount) || amount <= 0) {
-    throw new Error(`Se esperaba una cantidad entera positiva, se recibió ${amount}`);
+    throw new Error(`Positive integer amount expected, got ${amount}`);
   }
   return amount / USD_FACTOR;
 }
 
 export function extractAndValidateSymbol(symbol: string) {
-  // En general, son posibles otros símbolos además de usd, pero
-  // solo admitimos usd en este tutorial
-  if (symbol !== "usd") {
-    throw new Error(`Se esperaba el símbolo usd, se recibió ${symbol}`);
+  // In general symbols other than usd are possible, but
+  // we only support usd in the tutorial
+  if (!SYMBOLS.find(s=> s==symbol)) {
+    throw new Error(`Symbol ${SYMBOLS} expected, got ${symbol}`);
   }
   return symbol;
 }
@@ -66,7 +71,7 @@ export function extractAndValidateData(entry: {
 }) {
   const rawAddress = entry?.schema === "credit" ? entry.target : entry.source;
 	if(!rawAddress) {
-    throw new Error("Falta la dirección en la entrada");
+    throw new Error("Address missing from entry");
   }
   const address = extractAndValidateAddress(rawAddress);
   const amount = extractAndValidateAmount(entry.amount);

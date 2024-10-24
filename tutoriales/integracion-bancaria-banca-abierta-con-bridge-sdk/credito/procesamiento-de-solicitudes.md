@@ -15,7 +15,7 @@ El SDK de Bridge hace la mayor parte del trabajo pesado por nosotros:
 * coordinar el procesamiento de solicitudes
 * procesar actualizaciones finales de intenciones
 
-Solo necesitaremos escribir 6 métodos para procesar realmente la solicitud en el núcleo bancario. Es posible tener manejadores de solicitudes tanto síncronos como asíncronos, pero nos ceñiremos a los síncronos para este tutorial.
+Solo necesitaremos escribir 6 métodos para procesar realmente la solicitud en el núcleo bancario. Es posible tener manejadores de solicitudes tanto sincronos como asíncronos, pero nos ceñiremos a los síncronos para este tutorial.
 
 Necesitamos prepararnos para acreditar la cuenta del cliente, lo que implica cosas como verificar que existe, que está activa y similares en el núcleo bancario.
 

@@ -28,7 +28,7 @@ Usaremos el siguiente comando para iniciar nuestra base de datos:
 $ docker compose up
 ```
 
-Para detenerlo, simplemente presiona Ctrl + C. Si quieres seguir usando la misma terminal, puedes ejecutar el mismo comando y agregar la bandera `-d` para desacoplar el contenedor de la terminal. En ese caso, para detener el contenedor, necesitarás ejecutar `docker compose down`. Los comandos de docker deben ejecutarse en el mismo directorio donde se encuentra `docker-compose.yaml`, de lo contrario, necesitarás usar el argumento `-f nombre_archivo`.
+Para detenerlo, simplemente presiona `ctrl + C.` Si quieres seguir usando la misma terminal, puedes ejecutar el mismo comando y agregar la bandera `-d` para desacoplar el contenedor de la terminal. En ese caso, para detener el contenedor, necesitarás ejecutar `docker compose down`. Los comandos de docker deben ejecutarse en el mismo directorio donde se encuentra `docker-compose.yaml`, de lo contrario, necesitarás usar el argumento `-f nombre_archivo`.
 
 Ahora que tenemos la base de datos en funcionamiento, vamos a configurar un servicio bridge simple con endpoints predeterminados. Primero necesitaremos instalar las bibliotecas `@minka/bridge-sdk` y `@minka/ledger-sdk`.
 
@@ -71,7 +71,7 @@ También deberíamos crear el archivo `src/.env` con todas las variables de ento
 
 <pre><code><strong>LEDGER_HANDLE=[nombre del ledger]
 </strong>LEDGER_SERVER=[servidor donde se encuentra el ledger]
-LEDGER_PUBLIC_KEY="" #SYSTEM stg
+LEDGER_PUBLIC_KEY="" #SYSTEM
 BRIDGE_PUBLIC_KEY="" 
 BRIDGE_SECRET_KEY="" 
 PORT=3001
@@ -89,13 +89,21 @@ para obtener la llave pública (`LEDGER_PUBLIC_KEY`) del ledger, ejecute:&#x20;
 minka signer show system
 ```
 
-Si usó el CLI, para generar la llave pública y privada del bridge, puede usar el siguiente comando para obtener la información (`BRIDGE_PUBLIC_KEY` y `BRIDGE_SECRET_KEY`)
+Si usó el CLI, para generar la llave pública y privada del bridge (puede referirse a [creacion-de-una-clave-privada.md](../integrando-con-un-riel-de-sistema-de-pago-de-tiempo-real/creacion-de-una-clave-privada.md "mention")), puede usar el siguiente comando para obtener la información (`BRIDGE_PUBLIC_KEY` y `BRIDGE_SECRET_KEY`)&#x20;
 
 ```
 minka signer show [signer] -s
 ```
 
 Ahora podemos editar `src/main.ts` para configurar el Bridge SDK. El código carga la configuración para el servicio y la usa para construir el `ServerService` y `ProcessorService` de `@minka/bridge-sdk`. El `ServerService` creará todos los endpoints necesarios que necesitamos y aceptará solicitudes de procesamiento del Ledger. El `ProcessorService` procesará esas solicitudes y notificará al Ledger de los resultados.
+
+> Cambie la siguiente información
+>
+> ```
+> handle: '[bridge handle]'
+> ```
+
+
 
 ```tsx
 // cargar archivo .env
@@ -147,7 +155,7 @@ const ledger: LedgerClientOptions = {
       public: config.BRIDGE_PUBLIC_KEY,
       secret: config.BRIDGE_SECRET_KEY,
     },
-    handle: 'mint',
+    handle: '[bridge handle]',
   },
 }
 

@@ -1,6 +1,6 @@
 # Procesamiento de una entrada de crédito
 
-Ahora que estamos configurados, podemos crear una intención y deberíamos ver algunas solicitudes provenientes del Ledger. Aquí utilizaremos el firmante, la billetera y el puente que creamos en el tutorial anterior. Usaremos el mismo firmante **mint**, billetera y puente que creaste en el tutorial anterior y comenzaremos registrando el Puente con el Ledger. Ya debería existir, así que solo actualizaremos la URL para que apunte a nosotros. Sin embargo, antes de eso, necesitarás una URL pública a la que Ledger pueda apuntar. Si no tienes una, puedes usar ngrok
+Ahora que estamos configurados, podemos crear una intención y deberíamos ver algunas solicitudes provenientes del Ledger. Aquí utilizaremos el firmante, la billetera y el puente que creamos en el tutorial anterior. Usaremos el mismo firmante `bridge@mintbank.dev`, billetera y puente que creaste en el tutorial anterior y comenzaremos registrando el Puente con el Ledger. Ya debería existir, así que solo actualizaremos la URL para que apunte a nosotros. Sin embargo, antes de eso, necesitarás una URL pública a la que Ledger pueda apuntar. Si no tienes una, puedes usar ngrok
 
 Comienza abriendo una terminal dedicada para ngrok y ejecutando el siguiente comando.
 
@@ -32,11 +32,11 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 A continuación, ejecuta el siguiente comando, sustituyendo **mint** por tu propio puente. Cuando se te solicite, actualiza el campo `Server` y establécelo en del comando anterior.
 
 ```bash
-$ minka bridge update mint
+$ minka bridge update bridge@mintbank.dev
 
 Bridge summary:
 ---------------------------------------------------------------------------
-Handle: mint
+Handle: bridge@mintbank.dev
 Server: http://old.url:1234
 
 Access rules:
@@ -57,8 +57,8 @@ Updates received.
 ? Signer: mint
 
 ✅ Bridge updated successfully:
-Handle: mint
-Signer: 3wollw7xH061u4a+BZFvJknGeJcY1wKuhbWA3/0ritM= (mint)
+Handle: bridge@mintbank.dev
+Signer: 3wollw7xH061u4a+BZFvJknGeJcY1wKuhbWA3/0ritM= (bridge@mintbank.dev)
 ```
 
 Ahora finalmente crearemos una intención utilizando la herramienta CLI de esta manera.
@@ -67,26 +67,26 @@ Ahora finalmente crearemos una intención utilizando la herramienta CLI de esta 
 $ minka intent create
 ? Handle: tfkPgUiuUjQjRB9KJ
 ? Action: transfer
-? Source: account:73514@tesla
-? Target: account:1@mint
+? Source: svgs:73514@teslabank.io
+? Target: svgs:1@mintbank.dev
 ? Symbol: usd
 ? Amount: 10
 ? Add another action? No
 ? Add custom data? No
 ? Signers: tesla
-? Key password for tesla: *[hidden]*
+? Key password for teslabank: *[hidden]*
 
 Intent summary:
 ------------------------------------------------------------------------
 Handle: tfkPgUiuUjQjRB9KJ
 
 Action: transfer
- - Source: account:73514@tesla
- - Target: account:1@mint
+ - Source: svgs:73514@teslabank.io
+ - Target: svgs:1@mintbank.dev
  - Symbol: usd
  - Amount: $10.00
 
-? Sign this intent using signer tesla? Yes
+? Sign this intent using signer teslabank? Yes
 
 ✅ Intent signed and sent to ledger sandbox
 Intent status: pending
