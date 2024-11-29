@@ -63,6 +63,7 @@
 ## Guias
 
 * [Cómo generar llaves y firmas](guias/como-generar-claves-de-firma.md)
+* [Uso de encabezado personalizados](guias/uso-de-encabezado-personalizados.md)
 
 ## Referencias
 
@@ -88,6 +89,6 @@
     * [Autenticación mediante las firmas](explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-mediante-las-firmas.md)
     * [Autenticación con token JWT](explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-con-token-jwt/README.md)
       * [Como autenticar con JWT](explicaciones/sobre-seguridad/sobre-autenticacion/autenticacion-con-token-jwt/como-autenticar-con-jwt.md)
-  * [Generar JWT token](explicaciones/sobre-seguridad/generar-jwt-token.md)
+    * [Generar JWT token](explicaciones/sobre-seguridad/sobre-autenticacion/generar-jwt-token.md)
   * [Sobre autorización](explicaciones/sobre-seguridad/sobre-autorizacion.md)
   * [Sobre políticas de seguridad](explicaciones/sobre-seguridad/sobre-politicas-de-seguridad.md)
